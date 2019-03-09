@@ -14,7 +14,12 @@ async function onSuccessLoading(stream){
     worker.addEventListener('message', (message) => {
         console.log(JSON.parse(message.data));
     });  
-      
+
+    // エラーを表示する
+    worker.addEventListener('error', (error) => {
+        console.log(error);
+    });
+
     setInterval(function(){
         worker.postMessage(JSON.stringify(getImage(document.getElementById("video"))));
     }, 100);
