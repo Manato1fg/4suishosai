@@ -17,14 +17,14 @@ function startWebcam(stream){
 
     video.width = video.offsetWidth;
 
-    if(navigator.getUserMedia){
-        video.srcObject = stream;
-        video.play();
-    }else if(navigator.webkitGetUserMedia){
-        video.srcObject = window.webkitURL.createObjectURL(stream);
-        video.play();
-    }else if(navigator.mozGetUserMedia){
-        video.srcObject = window.URL.createObjectURL(stream);
-        video.play();
-    };
+    var src;
+
+    if(navigator.getUserMedia)              src = stream;
+    else if(navigator.webkitGetUserMedia)   src = window.webkitURL.createObjectURL(stream);
+    else if(navigator.mozGetUserMedia)      src = window.URL.createObjectURL(stream);
+
+    if ("srcObject" in video)   video.srcObject = src;
+    else                        video.src = src;
+    
+    video.play();
 };
