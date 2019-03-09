@@ -6,6 +6,8 @@ window.onload = function(){
 
 async function onSuccessLoading(stream){
     startWebcam(stream);
+    console.log("Loading the model... wait for a moment");
+    
     const model = await tf.loadLayersModel('https://raw.githubusercontent.com/Manato2cc/4suishosai/master/SuiranStamp/python/model/model.json');
     setInterval(function(){
         var thread = new Thread(function(video){
