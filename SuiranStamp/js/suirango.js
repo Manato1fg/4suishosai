@@ -9,13 +9,13 @@ async function onSuccessLoading(stream){
     console.log("Loading the model... wait for a moment");
     
     const model = await tf.loadLayersModel('https://raw.githubusercontent.com/Manato2cc/4suishosai/master/SuiranStamp/python/model/model.json');
-    console.log("Loaded");
+    const _tf = tf;
     document.getElementById("Loading").remove();
     document.getElementById("button").onclick = function(e){
-        var image = tf.fromPixels(getImage(document.getElementById("video")));
+        var image = _tf.browser.fromPixels(getImage(document.getElementById("video")), 3);
         var axis = 0;
         image = image.expandDims(axis);
-        const prediction = model.predict(image);
+        const prediction = model.predict(image).dataSync();
         console.log(prediction);
     };
     document.getElementById("button").removeAttribute("disabled");
