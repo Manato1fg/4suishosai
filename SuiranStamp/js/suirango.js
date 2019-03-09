@@ -11,7 +11,7 @@ async function onSuccessLoading(stream){
     const model = await tf.loadLayersModel('https://raw.githubusercontent.com/Manato2cc/4suishosai/master/SuiranStamp/python/model/model.json');
     const worker = new Worker("js/worker.js")
     setInterval(function(){
-        worker.postMessage("");
+        worker.postMessage(tf);
     }, 100);
 }
 

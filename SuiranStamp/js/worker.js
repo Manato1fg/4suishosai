@@ -1,5 +1,5 @@
 addEventListener("message", function(e){
-
+    var tf = e.data;
     var image = tf.browser.fromPixels(getImage(document.getElementById("video")), 3);  // for example
     var axis = 0;
     image = image.expandDims(axis);
