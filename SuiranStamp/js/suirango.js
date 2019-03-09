@@ -6,7 +6,7 @@ window.onload = function(){
 
 async function onSuccessLoading(stream){
     startWebcam(stream);
-    const model = await tf.loadLayersModel('http://mnt2cc.com/suiiranStamp/model/suirango.json');
+    const model = await tf.loadLayersModel('https://raw.githubusercontent.com/Manato2cc/4suishosai/master/SuiranStamp/python/model/model.json');
     setInterval(function(){
         var thread = new Thread(function(video){
             var image = tf.fromPixels(video);  // for example
