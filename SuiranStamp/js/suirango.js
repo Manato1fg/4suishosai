@@ -15,6 +15,7 @@ async function onSuccessLoading(stream){
     const _tf = tf;
     document.getElementById("Loading").remove();
     document.getElementById("button").onclick = function(e){
+        var video = document.getElementById("video");
         preprocess(video);
         /*var image = _tf.browser.fromPixels(getImage(document.getElementById("video")), 3);
         var axis = 0;
