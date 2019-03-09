@@ -9,26 +9,21 @@ async function onSuccessLoading(stream){
     console.log("Loading the model... wait for a moment");
     
     const model = await tf.loadLayersModel('https://raw.githubusercontent.com/Manato2cc/4suishosai/master/SuiranStamp/python/model/model.json');
-    const worker = new Worker("js/worker.js")
-    // メッセージを受信してコンソールに表示する
-    worker.addEventListener('message', (message) => {
-        console.log(JSON.parse(message.data));
-    });  
-
-    // エラーを表示する
-    worker.addEventListener('error', (error) => {
-        console.log(error);
-    });
-
-    setInterval(function(){
-        worker.postMessage(JSON.stringify(getImage(document.getElementById("video"))));
-    }, 100);
+    console.log("Loaded");
+    document.getElementById("Loading").remove();
+    document.getElementById("button").onclick = function(e){
+        var image = tf.fromPixels(getImage(document.getElementById("video")));
+        var axis = 0;
+        image = image.expandDims(axis);
+        const prediction = model.predict(image);
+        console.log(prediction);
+    };
+    document.getElementById("button").removeAttribute("disabled");
 }
 
 function onError(err){
     alert("正常にカメラが起動できませんでした。\nerror code: "+err.code);
 }
-
 
 function getImage(video){
     var canvas = document.createElement('canvas');
