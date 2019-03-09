@@ -9,9 +9,9 @@ async function onSuccessLoading(stream){
     console.log("Loading the model... wait for a moment");
     
     const model = await tf.loadLayersModel('https://raw.githubusercontent.com/Manato2cc/4suishosai/master/SuiranStamp/python/model/model.json');
-    const worker = new Worker("./worker.js")
+    const worker = new Worker("js/worker.js")
     setInterval(function(){
-        worker.postMessage(document.getElementById("video"));
+        worker.postMessage();
     }, 100);
 }
 

@@ -1,7 +1,6 @@
 addEventListener("message", function(e){
-    var data = e.data; //Video Element
 
-    var image = tf.browser.fromPixels(getImage(data), 3);  // for example
+    var image = tf.browser.fromPixels(getImage(document.getElementById("video")), 3);  // for example
     var axis = 0;
     image = image.expandDims(axis);
     const prediction = model.predict(image);
