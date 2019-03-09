@@ -4,7 +4,7 @@ window.onload = function(){
     webcam(onSuccessLoading, onError);
 }
 
-const detector;
+var detector;
 
 async function onSuccessLoading(stream){
     startWebcam(stream);
