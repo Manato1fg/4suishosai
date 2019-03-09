@@ -4,7 +4,7 @@ window.onload = function(){
     webcam(onSuccessLoading, onError);
 }
 
-var detector;
+const detector;
 
 async function onSuccessLoading(stream){
     startWebcam(stream);
@@ -14,9 +14,11 @@ async function onSuccessLoading(stream){
     detector = new AR.Detector();
     const _tf = tf;
     document.getElementById("Loading").remove();
+    const video = document.getElementById("video");
     document.getElementById("button").onclick = function(e){
-        var video = document.getElementById("video");
-        preprocess(video);
+        var imageData = getImage(video);
+        var markers = detector.detect(imageData);
+        console.log(markers);
         /*var image = _tf.browser.fromPixels(getImage(document.getElementById("video")), 3);
         var axis = 0;
         image = image.expandDims(axis);
@@ -31,10 +33,6 @@ function onError(err){
 }
 
 function preprocess(video){
-    var imageData = getImage(video);
-    var markers = detector.detect(imageData);
-    console.log(markers);
-    
 }
 
 function getImage(video){
