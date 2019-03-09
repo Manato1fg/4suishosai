@@ -1,3 +1,5 @@
+importScripts("https://unpkg.com/@tensorflow/tfjs");
+importScripts("https://unpkg.com/@tensorflow-models/mobilenet");
 addEventListener("message", function(e){
     var tf = e.data;
     var image = tf.browser.fromPixels(getImage(document.getElementById("video")), 3);  // for example
