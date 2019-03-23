@@ -26,7 +26,7 @@
             console.log(query);
             
             var database = firebase.database();
-            database.ref("accessToken").once(tempToken).then(function(snapshot){
+            database.ref("accessToken").once('value').then(function(snapshot){
                 console.log(snapshot);
                 
             })
