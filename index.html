@@ -1,0 +1,30 @@
+<html>
+    <body>
+
+        <img class="loginBtn" src="./img/btn_login_base.png">
+
+        <!-- Firebase App is always required and must be first -->
+        <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-app.js"></script>
+        
+        <!-- Add additional services that you want to use -->
+        <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-auth.js"></script>
+        <!-- <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-database.js"></script> -->
+        <!-- <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-firestore.js"></script> -->
+        <!-- <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-messaging.js"></script> -->
+        <!-- <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-functions.js"></script> -->
+        <script>
+            // Initialize Firebase
+            var config = {
+                apiKey: "AIzaSyBv3lwTcaflADaCXLlnXb6xCnIOWq6pr3g",
+                authDomain: "suishosai-6ec43.firebaseapp.com",
+                databaseURL: "https://suishosai-6ec43.firebaseio.com",
+                projectId: "suishosai-6ec43",
+                storageBucket: "suishosai-6ec43.appspot.com",
+                messagingSenderId: "249791075274"
+            };
+            firebase.initializeApp(config);
+        </script>
+
+        <script src="js/component.js"></script>
+    </body>
+</html>

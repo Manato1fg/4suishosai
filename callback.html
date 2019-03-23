@@ -1,0 +1,32 @@
+<html>
+    <body>
+        <!-- Firebase App is always required and must be first -->
+        <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-app.js"></script>
+        
+        <script>
+            // Initialize Firebase
+            var config = {
+                apiKey: "AIzaSyBv3lwTcaflADaCXLlnXb6xCnIOWq6pr3g",
+                authDomain: "suishosai-6ec43.firebaseapp.com",
+                databaseURL: "https://suishosai-6ec43.firebaseio.com",
+                projectId: "suishosai-6ec43",
+                storageBucket: "suishosai-6ec43.appspot.com",
+                messagingSenderId: "249791075274"
+            };
+            firebase.initializeApp(config);
+        </script>
+        
+        <script src="js/component.js"></script>
+        <script>
+            var query = getQueryString();
+
+            var tempToken = query.accessToken;
+
+            var database = firebase.database();
+            database.ref("accessToken").once(tempToken).then(function(snapshot){
+                console.log(snapshot);
+                
+            })
+        </script>
+    </body>
+</html>

@@ -7,18 +7,13 @@
     </head>
     <body>
         <h2>翠嵐スタンプラリーデモ版</h2>
-        <video id="video" width="500" height="420"></video>
-        <p id="Loading">Loading...</p>
-        <button id="button" disabled>Click Me</button>
+        <video id="video" width="400" height="400"></video>
+        <button id="button">button</button>
+        <canvas id="output"></canvas>
 
-        <!-- for use thread -->
-        <script src="https://cdn.rawgit.com/deep-rain/thread/1.0.0/dist/thread.min.js"></script>
-        <!-- Load the latest version of TensorFlow.js -->
-        <script src="https://unpkg.com/@tensorflow/tfjs"></script>
-        <script src="https://unpkg.com/@tensorflow-models/mobilenet"></script>
-        <script src="js/cv.js"></script> 
-        <script src="js/aruco.js"></script> 
+        <script src="js/opencv.js"></script>
         <script src="js/webcam.js"></script>
+        <script src="js/utils.js"></script>
         <script src="js/suirango.js"></script>
     </body>
 </html>

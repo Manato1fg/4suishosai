@@ -1,0 +1,54 @@
+
+const myconfig = {
+    LINE_LOGIN_URL: "https://suishosai-login.herokuapp.com/gotoauthpage",
+}
+/**
+ * This event is called when component which has loginBtn class is clicked.
+ * Then call login function.
+ */
+document.addEventListener("click", function(e){
+    var target = e.target;
+    if (target.classList.contains("loginBtn")){
+        target.src = "./img/btn_login_press.png";
+        location.href = myconfig.LINE_LOGIN_URL;
+    }
+})
+
+/**
+ * This event is called when mouse pointer moves on login button
+ */
+document.addEventListener("mouseover", function(e){
+    var target = e.target;
+    if (target.classList.contains("loginBtn")) {
+        target.src = "./img/btn_login_hover.png";
+    }
+})
+
+/**
+ * This event is called when mouse pointer leaves login button
+ */
+document.addEventListener("mouseout", function (e) {
+    var target = e.target;
+    if (target.classList.contains("loginBtn")) {
+        target.src = "./img/btn_login_base.png";
+    }
+})
+
+function getQueryString() {
+    var result = {};
+    if (1 < window.location.search.length) {
+        var query = window.location.search.substring(1);
+
+        var parameters = query.split('&');
+
+        for (var i = 0; i < parameters.length; i++) {
+            var element = parameters[i].split('=');
+
+            var paramName = decodeURIComponent(element[0]);
+            var paramValue = decodeURIComponent(element[1]);
+
+            result[paramName] = paramValue;
+        }
+    }
+    return result;
+}
