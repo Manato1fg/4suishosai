@@ -3,6 +3,8 @@
 
         <img class="loginBtn" src="./img/btn_login_base.png">
 
+        <button id="vote">投票する</button>
+
         <!-- Firebase App is always required and must be first -->
         <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-app.js"></script>
         
@@ -31,8 +33,15 @@
 
             if(query["login"]){
                 alert("ログインに成功しました。");
-                console.log(window.localStorage.getItem("accessKey"));    
             }
+
+            document.getElementById("vote").addEventListener("click", function(){
+                if(window.localStorage.getItem("accessKey")){
+                    postData("http://suishosai.starfree.jp/contest.php", 3, 24, 56, 79);
+                }else{
+                    alert("you need to login before vote");
+                }
+            })
         </script>
     </body>
 </html>

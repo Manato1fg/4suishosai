@@ -39,6 +39,47 @@ document.addEventListener("mouseout", function (e) {
     }
 })
 
+function postData(url, data1, data2, data3, data4){
+
+    var xhr = new XMLHttpRequest();
+
+    xhr.open('POST', url);
+    xhr.setRequestHeader('content-type', 'application/x-www-form-urlencoded;charset=UTF-8');
+
+    xhr.onreadystatechange = function () {
+
+        if (xhr.readyState === 4 && xhr.status === 200) {
+            console.log(xhr.responseText);
+
+            var response = xhr.responseText;
+            if(response === "Voted"){
+                alert("投票は一人一回までとなっております。");
+            } else if (response === "Successfully Voted"){
+                alert("投票が完了しました。");
+            } else if (response === "Failed"){
+                alert("問題が発生しました。");
+            }
+        }
+    }
+
+    xhr.send(createRequestUrl(data1, data2, data3, data4));
+}
+
+function createRequestUrl(data1, data2, data3, data4){
+    var str = 
+    createRequest("data1", data1) + "&" + 
+    createRequest("data2", data2) + "&" + 
+    createRequest("data3", data3) + "&" + 
+    createRequest("data4", data4) + "&" + 
+    createRequest("accessToken", window.localStorage.getItem("accessKey"));
+
+    return str;
+}
+
+function createRequest(name, value){
+    return name + "=" + value;
+}
+
 function getQueryString() {
     var result = {};
     if (1 < window.location.search.length) {
