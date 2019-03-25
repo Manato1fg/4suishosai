@@ -10,7 +10,12 @@ document.addEventListener("click", function(e){
     var target = e.target;
     if (target.classList.contains("loginBtn")){
         target.src = "./img/btn_login_press.png";
-        location.href = myconfig.LINE_LOGIN_URL;
+        if(window.localStorage.getItem("accessKey")){
+            alert("既にログインしています");
+
+        }else{
+            location.href = myconfig.LINE_LOGIN_URL;
+        }
     }
 })
 
