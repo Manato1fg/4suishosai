@@ -37,7 +37,7 @@
 
             document.getElementById("vote").addEventListener("click", function(){
                 if(window.localStorage.getItem("accessKey")){
-                    postData("http://suishosai.starfree.jp/contest.php", 3, 24, 56, 79);
+                    postData("https://suishosai-redirect.herokuapp.com/redirect.php", 3, 24, 56, 79);
                 }else{
                     alert("you need to login before vote");
                 }
