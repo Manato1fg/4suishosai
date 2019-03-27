@@ -5,39 +5,36 @@
 
         <button id="vote">投票する</button>
 
-        <!-- Firebase App is always required and must be first -->
-        <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-app.js"></script>
-        
-        <!-- Add additional services that you want to use -->
-        <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-auth.js"></script>
-        <!-- <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-database.js"></script> -->
-        <!-- <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-firestore.js"></script> -->
-        <!-- <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-messaging.js"></script> -->
-        <!-- <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-functions.js"></script> -->
-        <script>
-            // Initialize Firebase
-            var config = {
-                apiKey: "AIzaSyBv3lwTcaflADaCXLlnXb6xCnIOWq6pr3g",
-                authDomain: "suishosai-6ec43.firebaseapp.com",
-                databaseURL: "https://suishosai-6ec43.firebaseio.com",
-                projectId: "suishosai-6ec43",
-                storageBucket: "suishosai-6ec43.appspot.com",
-                messagingSenderId: "249791075274"
-            };
-            firebase.initializeApp(config);
-        </script>
-
         <script src="js/component.js"></script>
         <script>
             var query = getQueryString();
 
             if(query["login"]){
                 alert("ログインに成功しました。");
+                location.href = ".";
             }
 
             document.getElementById("vote").addEventListener("click", function(){
                 if(window.localStorage.getItem("accessKey")){
-                    postData("https://suishosai-redirect.herokuapp.com/redirect.php", 3, 24, 56, 79);
+                    var data1 = 3;
+                    var data2 = 24;
+                    var data3 = 56;
+                    var data4 = 79;
+                    var data = createVoteRequestUrl(data1, data2, data3, data4);
+                    var callback = function () {
+
+                        if (xhr.readyState === 4 && xhr.status === 200) {
+                            var response = xhr.responseText;
+                            if (response === "Voted") {
+                                alert("投票は一人一回までとなっております。");
+                            } else if (response === "Successfully Voted") {
+                                alert("投票が完了しました。");
+                            } else if (response === "Failed") {
+                                alert("問題が発生しました。");
+                            }
+                        }
+                    }
+                    postData("https://suishosai-server-php.herokuapp.com/contest.php", data, callback);
                 }else{
                     alert("you need to login before vote");
                 }

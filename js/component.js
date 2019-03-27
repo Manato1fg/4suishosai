@@ -1,6 +1,6 @@
 
 const myconfig = {
-    LINE_LOGIN_URL: "https://suishosai-login.herokuapp.com/gotoauthpage",
+    LINE_LOGIN_URL: "https://suishosai-server.herokuapp.com/gotoauthpage",
 }
 /**
  * This event is called when component which has loginBtn class is clicked.
@@ -39,33 +39,19 @@ document.addEventListener("mouseout", function (e) {
     }
 })
 
-function postData(url, data1, data2, data3, data4){
+function postData(url, data, callback){
 
     var xhr = new XMLHttpRequest();
 
     xhr.open('POST', url);
     xhr.setRequestHeader('content-type', 'application/x-www-form-urlencoded;charset=UTF-8');
 
-    xhr.onreadystatechange = function () {
+    xhr.onreadystatechange = callback;
 
-        if (xhr.readyState === 4 && xhr.status === 200) {
-            console.log(xhr.responseText);
-
-            var response = xhr.responseText;
-            if(response === "Voted"){
-                alert("投票は一人一回までとなっております。");
-            } else if (response === "Successfully Voted"){
-                alert("投票が完了しました。");
-            } else if (response === "Failed"){
-                alert("問題が発生しました。");
-            }
-        }
-    }
-
-    xhr.send(createRequestUrl(data1, data2, data3, data4));
+    xhr.send(data);
 }
 
-function createRequestUrl(data1, data2, data3, data4){
+function createVoteRequestUrl(data1, data2, data3, data4){
     var str = 
     createRequest("data1", data1) + "&" + 
     createRequest("data2", data2) + "&" + 
