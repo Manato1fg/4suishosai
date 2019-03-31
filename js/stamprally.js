@@ -48,24 +48,28 @@ function post(content){
     }
     var url = "https://suishosai-server-php.herokuapp.com/redirect2.php";
     var data = createStampRallyRequestUrl(content);
+    var callback = function () {
+
+        if (xhr.readyState === 4 && xhr.status === 200) {
+            var body = xhr.responseText;
+            if (body === "No result") {
+                alert("翠翔祭スタンプラリーのQRコード以外のQRを読み込みました");
+                return;
+            }
+            else if (body === "already got") {
+                alert("もうそのスタンプは押されています");
+                return;
+            }
+            else if (body === "No user") {
+                alert("先にログインしてください");
+                return;
+            } else {
+                document.getElementById("result").src = "https://suishosai-server-php.herokuapp.com/createStampCard.php?accessToken=" + getUserID();
+            }
+        }
+    }
     
-    postData(url, data, function(body){
-        if(body === "No result"){
-            alert("翠翔祭スタンプラリーのQRコード以外のQRを読み込みました");
-            return;
-        }
-        else if(body === "already got"){
-            alert("もうそのスタンプは押されています");
-            return;
-        }
-        else if (body === "No user"){
-            alert("先にログインしてください");
-            return;
-        }else{
-            alert(body);
-            document.getElementById("result").src = "https://suishosai-server-php.herokuapp.com/createStampCard.php?accessToken=" + getUserID();
-        }
-    })
+    postData(url, data, callback);
 }
 // Switch Camera
 function registerSwitchCameraButton(id){
