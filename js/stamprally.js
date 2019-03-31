@@ -14,7 +14,8 @@ function initStampRally(videoId, buttonId){
     scanner = new Instascan.Scanner(
         {
             video: document.getElementById(videoId),
-            scanPeriod: 5
+            scanPeriod: 5,
+            mirror: false
         }
     );
     
@@ -23,6 +24,7 @@ function initStampRally(videoId, buttonId){
     startWithId(0);
 
     registerSwitchCameraButton(buttonId);
+
 }
 
 function startWithId(cameraId){
