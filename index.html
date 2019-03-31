@@ -21,9 +21,9 @@
                     var data3 = 56;
                     var data4 = 79;
                     var data = createVoteRequestUrl(data1, data2, data3, data4);
-                    var callback = function () {
+                    var callback = function (res) {
 
-                        if (xhr.readyState === 4 && xhr.status === 200) {
+                        /*if (xhr.readyState === 4 && xhr.status === 200) {
                             var response = xhr.responseText;
                             if (response === "Voted") {
                                 alert("投票は一人一回までとなっております。");
@@ -32,9 +32,10 @@
                             } else if (response === "Failed") {
                                 alert("問題が発生しました。");
                             }
-                        }
+                        }*/
+                        console.log(res);
                     }
-                    postData("https://suishosai-server-php.herokuapp.com/contest.php", data, callback);
+                    postData("https://suishosai-server-php.herokuapp.com/redirect1.php", data, callback);
                 }else{
                     alert("you need to login before vote");
                 }
