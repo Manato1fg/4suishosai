@@ -62,6 +62,7 @@ function post(content){
             alert("先にログインしてください");
             return;
         }else{
+            alert(body);
             document.getElementById("result").src = "https://suishosai-server-php.herokuapp.com/createStampCard.php?accessToken=" + getUserID();
         }
     })
