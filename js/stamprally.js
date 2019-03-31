@@ -42,6 +42,10 @@ function startWithId(cameraId){
 }
 
 function post(content){
+    if(!getUserID()){
+        alert("まずログインしてください");
+        return;
+    }
     var url = "https://suishosai-server-php.herokuapp.com/redirect2.php";
     var data = createStampRallyRequestUrl(content);
     
