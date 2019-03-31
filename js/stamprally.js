@@ -13,7 +13,8 @@ function initStampRally(videoId, buttonId){
 
     scanner = new Instascan.Scanner(
         {
-            video: document.getElementById(videoId)
+            video: document.getElementById(videoId),
+            scanPeriod: 5
         }
     );
     
