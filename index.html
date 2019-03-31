@@ -17,14 +17,14 @@
             document.getElementById("vote").addEventListener("click", function(){
                 if(window.localStorage.getItem("userid")){
                     var data1 = 3;
-                    var data2 = 24;
-                    var data3 = 56;
-                    var data4 = 79;
+                    var data2 = 18;
+                    var data3 = 45;
+                    var data4 = 45;
                     var data = createVoteRequestUrl(data1, data2, data3, data4);
-                    var callback = function (res) {
-
-                        /*if (xhr.readyState === 4 && xhr.status === 200) {
-                            var response = xhr.responseText;
+                    var callback = function (e) {
+                        var status = e.target.status;
+                        var response = e.target.responseText;
+                        if (status === 200) {
                             if (response === "Voted") {
                                 alert("投票は一人一回までとなっております。");
                             } else if (response === "Successfully Voted") {
@@ -32,7 +32,7 @@
                             } else if (response === "Failed") {
                                 alert("問題が発生しました。");
                             }
-                        }*/
+                        }
                         console.log(res);
                     }
                     postData("https://suishosai-server-php.herokuapp.com/redirect1.php", data, callback);

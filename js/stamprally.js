@@ -48,19 +48,19 @@ function post(content){
     }
     var url = "https://suishosai-server-php.herokuapp.com/redirect2.php";
     var data = createStampRallyRequestUrl(content);
-    var callback = function () {
-
-        if (xhr.readyState === 4 && xhr.status === 200) {
-            var body = xhr.responseText;
-            if (body === "No result") {
+    var callback = function (e) {
+        var status = e.target.status;
+        var response = e.target.responseText;
+        if (status === 200) {
+            if (response === "No result") {
                 alert("翠翔祭スタンプラリーのQRコード以外のQRを読み込みました");
                 return;
             }
-            else if (body === "already got") {
+            else if (response === "already got") {
                 alert("もうそのスタンプは押されています");
                 return;
             }
-            else if (body === "No user") {
+            else if (response === "No user") {
                 alert("先にログインしてください");
                 return;
             } else {
