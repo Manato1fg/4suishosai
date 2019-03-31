@@ -50,8 +50,9 @@ function post(content){
     var data = createStampRallyRequestUrl(content);
     var callback = function (e) {
         var status = e.target.status;
+        var readyState = e.target.readyState;
         var response = e.target.responseText;
-        if (status === 200) {
+        if (status === 200 && readyState === 4) {
             if (response === "No result") {
                 alert("翠翔祭スタンプラリーのQRコード以外のQRを読み込みました");
                 return;

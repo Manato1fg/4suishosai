@@ -23,8 +23,9 @@
                     var data = createVoteRequestUrl(data1, data2, data3, data4);
                     var callback = function (e) {
                         var status = e.target.status;
+                        var readyState = e.target.readyState;
                         var response = e.target.responseText;
-                        if (status === 200) {
+                        if (status === 200 && readyState === 4) {
                             if (response === "Voted") {
                                 alert("投票は一人一回までとなっております。");
                             } else if (response === "Successfully Voted") {
