@@ -75,7 +75,7 @@ function createRequest(name, value){
 }
 
 function getUserID(){
-    return window.localStorage.getItem("userId");
+    return window.localStorage.getItem("userid");
 }
 
 function getQueryString() {
