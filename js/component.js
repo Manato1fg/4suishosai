@@ -10,7 +10,7 @@ document.addEventListener("click", function(e){
     var target = e.target;
     if (target.classList.contains("loginBtn")){
         target.src = "./img/btn_login_press.png";
-        if(window.localStorage.getItem("accessKey")){
+        if(getUserID()){
             alert("既にログインしています");
 
         }else{
@@ -57,13 +57,25 @@ function createVoteRequestUrl(data1, data2, data3, data4){
     createRequest("data2", data2) + "&" + 
     createRequest("data3", data3) + "&" + 
     createRequest("data4", data4) + "&" + 
-    createRequest("accessToken", window.localStorage.getItem("accessKey"));
+    createRequest("accessToken", getUserID());
+
+    return str;
+}
+
+function createStampRallyRequestUrl(content){
+    var str =
+    createRequest("content", content) + "&" +
+    createRequest("accessToken", getUserID());
 
     return str;
 }
 
 function createRequest(name, value){
     return name + "=" + value;
+}
+
+function getUserID(){
+    return window.localStorage.getItem("userId");
 }
 
 function getQueryString() {
