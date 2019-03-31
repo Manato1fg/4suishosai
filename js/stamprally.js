@@ -4,12 +4,17 @@ var cameraOn = false;
 
 let scanner = null;
 
+let img = null;
+
 /**
  * 
  * @param {video id} videoId 
  * @param {id of button which is used for switching camera} buttonId 
  */
-function initStampRally(videoId, buttonId){
+function initStampRally(videoId, buttonId, imageId){
+
+    img = document.getElementById(imageId);
+    img.src = "https://suishosai-server-php.herokuapp.com/createStampCard.php?accessToken=" + getUserID();
 
     scanner = new Instascan.Scanner(
         {
@@ -65,7 +70,7 @@ function post(content){
                 alert("先にログインしてください");
                 return;
             } else {
-                document.getElementById("result").src = "https://suishosai-server-php.herokuapp.com/createStampCard.php?accessToken=" + getUserID();
+                img.src = "https://suishosai-server-php.herokuapp.com/createStampCard.php?accessToken=" + getUserID();
             }
         }
     }
