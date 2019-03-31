@@ -4,13 +4,11 @@
         <script>
             var query = getQueryString();
 
-            var token = query.accessToken;
+            var token = query.userid;
 
-            alert(query.name);
+            window.localStorage.setItem("userid", token);
 
-            window.localStorage.setItem("accessKey", token);
-
-            //location.href = "./index.html?login=succeed";
+            location.href = "./index.html?login=succeed";
         </script>
     </body>
 </html>
