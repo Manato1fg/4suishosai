@@ -70,7 +70,7 @@ function post(content){
                 alert("先にログインしてください");
                 return;
             } else {
-                img.src = "https://suishosai-server-php.herokuapp.com/createStampCard.php?accessToken=" + getUserID()+"&random="+Date.now.toString();
+                img.src = "https://suishosai-server-php.herokuapp.com/createStampCard.php?accessToken=" + getUserID()+"&random="+Date.now().toString();
             }
         }
     }
