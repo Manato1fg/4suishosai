@@ -64,7 +64,7 @@ function createVoteRequestUrl(data1, data2, data3, data4){
 
 function createStampRallyRequestUrl(content){
     var str =
-    createRequest("content", content) + "&" +
+    createRequest("text", content) + "&" +
     createRequest("accessToken", getUserID());
 
     return str;
