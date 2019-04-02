@@ -13,6 +13,11 @@ let img = null;
  */
 function initStampRally(videoId, buttonId, imageId){
 
+    if(!getUserID()){
+        alert("まずログインしてください");
+        login();
+    }
+
     img = document.getElementById(imageId);
     img.src = "https://suishosai-server-php.herokuapp.com/createStampCard.php?accessToken=" + getUserID();
 
@@ -87,8 +92,6 @@ function registerSwitchCameraButton(id){
             if(cameraNum >= cameraMax){
                 cameraNum = 0;
             }
-            alert(cameraNum);
-            alert(cameraMax);
             startWithId(cameraNum);  
         }
     });
