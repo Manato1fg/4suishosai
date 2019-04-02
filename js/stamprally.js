@@ -1,19 +1,49 @@
-let videoId = "";
+let v = null;
+var ctx = null;
 
 function read(a) {
     alert(a);
 }
 
+function captureToCanvas() {
+    if (ctx) {
+        try {
+            ctx.drawImage(v, 0, 0);
+            try {
+                qrcode.decode();
+            }
+            catch (e) {
+                console.log(e);
+                setTimeout(captureToCanvas, 500);
+            };
+        }
+        catch (e) {
+            console.log(e);
+            setTimeout(captureToCanvas, 500);
+        };
+    }
+}
+
 function success(stream) {
     v.srcObject = stream;
     v.play();
+    setTimeout(captureToCanvas, 500);
 }
 
 function error(error) {
     console.log(error);
 }
 
-function initStampRally(v, i) {
+function isCanvasSupported() {
+    var elem = document.createElement('canvas');
+    return !!(elem.getContext && elem.getContext('2d'));
+}
+
+function initStampRally(videoId, imageId) {
+
+    if (!isCanvasSupported()) {
+        alert("お使いの端末ではご使用になれません");
+    }
 
     if (!getUserID()) {
         var res = confirm("まずログインしてください");
@@ -25,10 +55,16 @@ function initStampRally(v, i) {
     }
 
 
-    img = document.getElementById(i);
+    img = document.getElementById(imageId);
     img.src = "https://suishosai-server-php.herokuapp.com/createStampCard.php?accessToken=" + getUserID();
 
-    videoId = v;
+    var canvas = document.createElement("canvas");
+    canvas.id = "qr-canvas";
+    canvas.style.visibility = "hidden";
+    ctx = canvas.getContext("2d");
+    document.body.appendChild(canvas);
+
+    v = document.getElementById(videoId);
     qrcode.callback = read;
 
     setwebcam();
@@ -63,7 +99,6 @@ function setwebcam() {
 
 function setwebcam2(options) {
     var n = navigator;
-    v = document.getElementById(videoId);
 
     if (n.mediaDevices.getUserMedia) {
         n.mediaDevices.getUserMedia({ video: options, audio: false }).
