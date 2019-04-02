@@ -69,7 +69,7 @@ function initStampRally(videoId, imageId) {
 function initCanvas(w, h){
     var canvas = document.createElement("canvas");
     canvas.id = "qr-canvas";
-    canvas.style.visibility = "hidden";
+    //canvas.style.visibility = "hidden";
     canvas.width = w;
     canvas.height = h;
     canvas.style.width = w + "px";
