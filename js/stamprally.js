@@ -25,7 +25,7 @@ function initStampRally(v, i) {
     }
 
 
-    img = document.getElementById(imageId);
+    img = document.getElementById(i);
     img.src = "https://suishosai-server-php.herokuapp.com/createStampCard.php?accessToken=" + getUserID();
 
     videoId = v;
