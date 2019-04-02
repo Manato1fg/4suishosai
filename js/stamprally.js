@@ -1,61 +1,87 @@
-let cameraMax = 0;
-var cameraNum = 0;
-var cameraOn = false;
+let videoId = "";
 
-let scanner = null;
+function read(a) {
+    alert(a);
+}
 
-let img = null;
+function success(stream) {
+    v.srcObject = stream;
+    v.play();
+}
 
-/**
- * 
- * @param {video id} videoId 
- * @param {id of button which is used for switching camera} buttonId 
- */
-function initStampRally(videoId, buttonId, imageId){
+function error(error) {
+    console.log(error);
+}
 
-    if(!getUserID()){
-        alert("まずログインしてください");
-        login();
+function initStampRally(v, i) {
+
+    if (!getUserID()) {
+        var res = confirm("まずログインしてください");
+        if (res) {
+            login();
+        } else {
+            location.href = "./";
+        }
     }
+
 
     img = document.getElementById(imageId);
     img.src = "https://suishosai-server-php.herokuapp.com/createStampCard.php?accessToken=" + getUserID();
 
-    scanner = new Instascan.Scanner(
-        {
-            video: document.getElementById(videoId),
-            scanPeriod: 5,
-            mirror: false
-        }
-    );
-    
-    scanner.addListener('scan', post);
+    videoId = v;
+    qrcode.callback = read;
 
-    startWithId(0);
-
-    registerSwitchCameraButton(buttonId);
-
+    setwebcam();
 }
 
-function startWithId(cameraId){
-    Instascan.Camera.getCameras().then(function (cameras) {
-        cameraMax = cameras.length;
-        if (cameras.length > 0) {
-            scanner.start(cameras[cameraId]);
-            cameraOn = true;
-        } else {
-            console.error('No cameras found.');
-        }
-    }).catch(function (e) {
-        console.error(e);
-    });
-}
+function setwebcam() {
 
-function post(content){
-    if(!getUserID()){
-        alert("まずログインしてください");
-        return;
+    var options = true;
+    if (navigator.mediaDevices && navigator.mediaDevices.enumerateDevices) {
+        try {
+            navigator.mediaDevices.enumerateDevices()
+                .then(function (devices) {
+                    devices.forEach(function (device) {
+                        if (device.kind === 'videoinput') {
+                            if (device.label.toLowerCase().search("back") > -1)
+                                options = { 'deviceId': { 'exact': device.deviceId }, 'facingMode': 'environment' };
+                        }
+                    });
+                    setwebcam2(options);
+                });
+        }
+        catch (e) {
+            console.log(e);
+        }
     }
+    else {
+        console.log("no navigator.mediaDevices.enumerateDevices");
+        setwebcam2(options);
+    }
+
+}
+
+function setwebcam2(options) {
+    var n = navigator;
+    v = document.getElementById(videoId);
+
+    if (n.mediaDevices.getUserMedia) {
+        n.mediaDevices.getUserMedia({ video: options, audio: false }).
+            then(function (stream) {
+                success(stream);
+            }).catch(function (error) {
+                error(error)
+            });
+    }
+    else if (n.getUserMedia) {
+        n.getUserMedia({ video: options, audio: false }, success, error);
+    }
+    else if (n.webkitGetUserMedia) {
+        n.webkitGetUserMedia({ video: options, audio: false }, success, error);
+    }
+}
+
+function post(content) {
     var url = "https://suishosai-server-php.herokuapp.com/redirect2.php";
     var data = createStampRallyRequestUrl(content);
     var callback = function (e) {
@@ -76,23 +102,10 @@ function post(content){
                 return;
             } else {
                 alert("スタンプを押しました!");
-                img.src = "https://suishosai-server-php.herokuapp.com/createStampCard.php?accessToken=" + getUserID()+"&random="+Date.now().toString();
+                img.src = "https://suishosai-server-php.herokuapp.com/createStampCard.php?accessToken=" + getUserID() + "&random=" + Date.now().toString();
             }
         }
     }
-    
+
     postData(url, data, callback);
-}
-// Switch Camera
-function registerSwitchCameraButton(id){
-    document.getElementById(id).addEventListener('click', function(e){
-        if(cameraOn){
-            cameraNum ++;
-            
-            if(cameraNum >= cameraMax){
-                cameraNum = 0;
-            }
-            startWithId(cameraNum);  
-        }
-    });
 }
