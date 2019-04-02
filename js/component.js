@@ -14,10 +14,14 @@ document.addEventListener("click", function(e){
             alert("既にログインしています");
 
         }else{
-            location.href = myconfig.LINE_LOGIN_URL;
+            login();
         }
     }
 })
+
+function login(){
+    location.href = myconfig.LINE_LOGIN_URL;
+}
 
 /**
  * This event is called when mouse pointer moves on login button
