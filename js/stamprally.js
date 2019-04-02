@@ -83,11 +83,12 @@ function registerSwitchCameraButton(id){
     document.getElementById(id).addEventListener('click', function(e){
         if(cameraOn){
             cameraNum ++;
-            console.log(cameraNum);
             
             if(cameraNum >= cameraMax){
                 cameraNum = 0;
             }
+            alert(cameraNum);
+            alert(cameraMax);
             startWithId(cameraNum);  
         }
     });
