@@ -58,7 +58,7 @@ function initStampRally(videoId, imageId) {
     img = document.getElementById(imageId);
     img.src = "https://suishosai-server-php.herokuapp.com/createStampCard.php?accessToken=" + getUserID();
 
-    initCanvas();
+    initCanvas(320, 200);
 
     v = document.getElementById(videoId);
     qrcode.callback = read;
@@ -69,7 +69,7 @@ function initStampRally(videoId, imageId) {
 function initCanvas(w, h){
     var canvas = document.createElement("canvas");
     canvas.id = "qr-canvas";
-    //canvas.style.visibility = "hidden";
+    canvas.style.visibility = "hidden";
     canvas.width = w;
     canvas.height = h;
     canvas.style.width = w + "px";
