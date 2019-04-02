@@ -58,16 +58,25 @@ function initStampRally(videoId, imageId) {
     img = document.getElementById(imageId);
     img.src = "https://suishosai-server-php.herokuapp.com/createStampCard.php?accessToken=" + getUserID();
 
-    var canvas = document.createElement("canvas");
-    canvas.id = "qr-canvas";
-    canvas.style.visibility = "hidden";
-    ctx = canvas.getContext("2d");
-    document.body.appendChild(canvas);
+    initCanvas();
 
     v = document.getElementById(videoId);
     qrcode.callback = read;
 
     setwebcam();
+}
+
+function initCanvas(w, h){
+    var canvas = document.createElement("canvas");
+    canvas.id = "qr-canvas";
+    canvas.style.visibility = "hidden";
+    canvas.width = w;
+    canvas.height = h;
+    canvas.style.width = w + "px";
+    canvas.style.height = h + "px";
+    ctx = canvas.getContext("2d");
+    ctx.clearRect(0, 0, w, h);
+    document.body.appendChild(canvas);
 }
 
 function setwebcam() {
