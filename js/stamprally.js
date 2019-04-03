@@ -27,6 +27,7 @@ function captureToCanvas() {
 function success(stream) {
     v.srcObject = stream;
     v.play();
+    console.log(v);
     initCanvas(v.width, v.height);
     setTimeout(captureToCanvas, 500);
 }
@@ -62,6 +63,9 @@ function initStampRally(videoId, imageId) {
 
     v = document.getElementById(videoId);
     qrcode.callback = read;
+
+    console.log(v);
+    
 
     setwebcam();
 }
