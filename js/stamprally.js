@@ -27,6 +27,7 @@ function captureToCanvas() {
 function success(stream) {
     v.srcObject = stream;
     v.play();
+    initCanvas(v.width, v.height);
     setTimeout(captureToCanvas, 500);
 }
 
@@ -52,13 +53,12 @@ function initStampRally(videoId, imageId) {
         } else {
             location.href = "./";
         }
+        return;
     }
 
 
     img = document.getElementById(imageId);
     img.src = "https://suishosai-server-php.herokuapp.com/createStampCard.php?accessToken=" + getUserID();
-
-    initCanvas(320, 200);
 
     v = document.getElementById(videoId);
     qrcode.callback = read;
