@@ -2,7 +2,7 @@ let v = null;
 var ctx = null;
 
 function read(a) {
-    alert(a);
+    post(a);
 }
 
 function captureToCanvas() {
@@ -27,7 +27,6 @@ function captureToCanvas() {
 function success(stream) {
     v.srcObject = stream;
     v.play();
-    console.log(v);
     initCanvas(v.width, v.height);
     setTimeout(captureToCanvas, 500);
 }
@@ -58,8 +57,8 @@ function initStampRally(videoId, imageId) {
     }
 
 
-    img = document.getElementById(imageId);
-    img.src = "https://suishosai-server-php.herokuapp.com/createStampCard.php?accessToken=" + getUserID();
+    //img = document.getElementById(imageId);
+    //img.src = "https://suishosai-server-php.herokuapp.com/createStampCard.php?accessToken=" + getUserID();
 
     v = document.getElementById(videoId);
 
@@ -150,18 +149,22 @@ function post(content) {
         if (status === 200 && readyState === 4) {
             if (response === "No result") {
                 alert("翠翔祭スタンプラリーのQRコード以外のQRを読み込みました");
+                setTimeout(captureToCanvas, 500);
                 return;
             }
             else if (response === "already got") {
                 alert("もうそのスタンプは押されています");
+                setTimeout(captureToCanvas, 500);
                 return;
             }
             else if (response === "No user") {
                 alert("先にログインしてください");
+                setTimeout(captureToCanvas, 500);
                 return;
             } else {
                 alert("スタンプを押しました!");
-                img.src = "https://suishosai-server-php.herokuapp.com/createStampCard.php?accessToken=" + getUserID() + "&random=" + Date.now().toString();
+                //img.src = "https://suishosai-server-php.herokuapp.com/createStampCard.php?accessToken=" + getUserID() + "&random=" + Date.now().toString();
+                setTimeout(captureToCanvas, 500);
             }
         }
     }
