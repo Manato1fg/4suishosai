@@ -62,6 +62,17 @@ function initStampRally(videoId, imageId) {
     img.src = "https://suishosai-server-php.herokuapp.com/createStampCard.php?accessToken=" + getUserID();
 
     v = document.getElementById(videoId);
+
+    var w = 500;
+    var h = 500;
+
+    v.width = w;
+    v.height = h;
+    v.style.width = w + "px";
+    v.style.height = h + "px";
+    v.style.position = "absolute";
+
+
     qrcode.callback = read;
 
     console.log(v);
