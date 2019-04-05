@@ -69,8 +69,8 @@ function initStampRally(videoId, imageId) {
 }
 
 function initCanvas(){
-    var w = v.width * 0.9;
-    var h = v.height * 0.9;
+    var w = window.innerWidth * 0.9;
+    var h = window.innerHeight * 0.9;
 
     v.style.width = w + "px";
     v.style.height = h + "px";
