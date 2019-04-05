@@ -95,48 +95,20 @@ function initCanvas(w, h){
 
 function setwebcam() {
 
-    var options = true;
-    if (navigator.mediaDevices && navigator.mediaDevices.enumerateDevices) {
-        try {
-            navigator.mediaDevices.enumerateDevices()
-                .then(function (devices) {
-                    devices.forEach(function (device) {
-                        if (device.kind === 'videoinput') {
-                            if (device.label.toLowerCase().search("back") > -1)
-                                options = { 'deviceId': { 'exact': device.deviceId }, 'facingMode': 'environment' };
-                        }
-                    });
-                    setwebcam2(options);
-                });
+    navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || window.navigator.mozGetUserMedia;
+    // リアカメラを使用.
+    //navigator.getUserMedia({video: true, audio: false},
+    navigator.getUserMedia(
+        {
+            audio: false,
+            video: { facingMode: { exact: "environment" } }
+        },
+        success,
+        function (err) {
+            console.log(err);
         }
-        catch (e) {
-            console.log(e);
-        }
-    }
-    else {
-        console.log("no navigator.mediaDevices.enumerateDevices");
-        setwebcam2(options);
-    }
+    );
 
-}
-
-function setwebcam2(options) {
-    var n = navigator;
-
-    if (n.mediaDevices.getUserMedia) {
-        n.mediaDevices.getUserMedia({ video: options, audio: false }).
-            then(function (stream) {
-                success(stream);
-            }).catch(function (error) {
-                error(error)
-            });
-    }
-    else if (n.getUserMedia) {
-        n.getUserMedia({ video: options, audio: false }, success, error);
-    }
-    else if (n.webkitGetUserMedia) {
-        n.webkitGetUserMedia({ video: options, audio: false }, success, error);
-    }
 }
 
 function post(content) {
