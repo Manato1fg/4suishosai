@@ -26,7 +26,7 @@ function captureToCanvas() {
 function success(stream) {
     v.srcObject = stream;
     v.play();
-    initCanvas(v.width, v.height);
+    initCanvas();
     setTimeout(captureToCanvas, 500);
 }
 
@@ -62,26 +62,22 @@ function initStampRally(videoId, imageId) {
 
     v = document.getElementById(videoId);
 
-    var w = window.innerWidth * 0.94;;
-    var h = window.innerHeight * 0.8 - 40;
-    
-
-    v.width = w;
-    v.height = h
-    v.style.width = w + "px";
-    v.style.height = h + "px";
-    v.style.position = "absolute";
-    v.style.top = 40 + "px";
-    v.style.left = (window.innerWidth - w) / 2;
-
-
     qrcode.callback = read;
     
 
     setwebcam();
 }
 
-function initCanvas(w, h){
+function initCanvas(){
+    var w = v.width * 0.9;
+    var h = v.height * 0.9;
+
+    v.style.width = w + "px";
+    v.style.height = h + "px";
+    v.style.position = "absolute";
+    v.style.top = 20 + "px";
+    v.style.left = (window.innerWidth - w) / 2;
+
     var canvas = document.createElement("canvas");
     canvas.id = "qr-canvas";
     canvas.style.visibility = "hidden";
