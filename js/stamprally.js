@@ -13,7 +13,6 @@ function captureToCanvas() {
                 qrcode.decode();
             }
             catch (e) {
-                alert(e);
                 setTimeout(captureToCanvas, 500);
             };
         }
