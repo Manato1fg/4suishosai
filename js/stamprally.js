@@ -95,19 +95,44 @@ function initCanvas(w, h){
 
 function setwebcam() {
 
-    navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || window.navigator.mozGetUserMedia;
-    // リアカメラを使用.
-    //navigator.getUserMedia({video: true, audio: false},
-    navigator.getUserMedia(
-        {
-            audio: false,
-            video: { facingMode: { exact: "environment" } }
-        },
-        success,
-        function (err) {
-            alert(err);
+    var n = navigator;
+    if (n.mediaDevices && n.mediaDevices.getUserMedia) {
+        n.mediaDevices.getUserMedia({
+            video: {
+                facingMode: "environment"
+            },
+            audio: false
+        }).then(success);
+    } else {
+        MediaStreamTrack.getSources(function (sourceInfos) {
+            var videoSource = null;
+            for (var i = 0; i != sourceInfos.length; ++i) {
+                var sourceInfo = sourceInfos[i];
+                if (sourceInfo.kind === 'video'
+                    && sourceInfo.facing === 'environment') {
+                    videoSource = sourceInfo.id;
+                }
+            }
+            sourceSelected(videoSource);
+        });
+        function sourceSelected(videoSource) {
+            var constraints = {
+                audio: false,
+                video: {
+                    optional: [{
+                        sourceId: videoSource
+                    }]
+                }
+            };
+            if (n.getUserMedia) {
+                n.getUserMedia(constraints, success, error);
+            } else if (n.webkitGetUserMedia) {
+                n.webkitGetUserMedia(constraints, success, error);
+            } else if (n.mozGetUserMedia) {
+                n.mozGetUserMedia(constraints, success, error);
+            }
         }
-    );
+    }
 
 }
 
