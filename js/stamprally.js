@@ -62,11 +62,12 @@ function initStampRally(videoId, imageId) {
 
     v = document.getElementById(videoId);
 
-    var w = 500;
-    var h = 500;
+    var w = window.innerWidth * 0.94;;
+    var h = window.innerHeight * 0.8 - 40;
+    
 
-    v.width = window.innerWidth * 0.94;
-    v.height = window.innerHeight * 0.8 - 40;
+    v.width = w;
+    v.height = h
     v.style.width = w + "px";
     v.style.height = h + "px";
     v.style.position = "absolute";
