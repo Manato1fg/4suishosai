@@ -13,12 +13,12 @@ function captureToCanvas() {
                 qrcode.decode();
             }
             catch (e) {
-                console.log(e);
+                alert(e);
                 setTimeout(captureToCanvas, 500);
             };
         }
         catch (e) {
-            console.log(e);
+            alert(e);
             setTimeout(captureToCanvas, 500);
         };
     }
@@ -33,7 +33,7 @@ function success(stream) {
 
 function error(error) {
     alert(error.name);
-    console.log(error);
+    alert(error);
 }
 
 function isCanvasSupported() {
@@ -66,16 +66,16 @@ function initStampRally(videoId, imageId) {
     var w = 500;
     var h = 500;
 
-    v.width = w;
-    v.height = h;
+    v.width = window.innerWidth * 0.94;
+    v.height = window.innerHeight * 0.8 - 40;
     v.style.width = w + "px";
     v.style.height = h + "px";
     v.style.position = "absolute";
+    v.style.top = 40 + "px";
+    v.style.left = (window.innerWidth - w) / 2;
 
 
     qrcode.callback = read;
-
-    console.log(v);
     
 
     setwebcam();
@@ -106,7 +106,7 @@ function setwebcam() {
         },
         success,
         function (err) {
-            console.log(err);
+            alert(err);
         }
     );
 
