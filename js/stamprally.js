@@ -32,6 +32,7 @@ function success(stream) {
 }
 
 function error(error) {
+    alert(error.name);
     console.log(error);
 }
 
