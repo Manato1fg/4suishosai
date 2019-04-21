@@ -46,7 +46,7 @@ const SPEAKER_USER_BALLOON = `
         <p>{MESSAGE}</p>
     </div>`;
 
-document.addEventListener("load", (e) => {initConcierge()});
+window.addEventListener("load", (e) => {initConcierge()});
 
 var logs = [];
 
