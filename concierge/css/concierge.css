@@ -35,6 +35,7 @@
 .concierge-chat{
     position: relative;
     height: 70%;
+    max-height: calc(80vh - 120px);
     overflow-y: scroll;
     overflow-x: hidden;
 }
@@ -42,6 +43,7 @@
 .concierge-input{
     position: relative;
     height: 30%;
+    min-height: 120px;
     background: blue;
     border-top: 1px solid #aaa;
     background: #eee;
