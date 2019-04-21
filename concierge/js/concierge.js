@@ -91,6 +91,7 @@ function initConcierge() {
     document.getElementById("concierge-question-icon").addEventListener("click", (e) => {
         var textarea = document.getElementById("concierge-input");
         textarea.value += "@q  ";
+        textarea.focus();
     })
 
     document.getElementById("concierge-send-icon").addEventListener("click", (e) => {
