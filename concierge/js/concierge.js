@@ -1,10 +1,5 @@
 var Settings = {
-    background: {
-        r: 21,
-        g: 255,
-        b: 0
-    },
-    init_message: "翠翔祭ホームページへようこそ！<br>私は案内人の{name}と申します。<br>質問や雑談などお気軽にお話しくださいませ。<br>質問の際はクエスチョンマークのボタンを押すか、@qに続けて検索ワードを入力してください。",
+    init_message: "翠翔祭ホームページへようこそ！<br>私は案内人の洋太と申します。<br>質問や雑談などお気軽にお話しくださいませ。<br>質問の際はクエスチョンマークのボタンを押すか、@qに続けて検索ワードを入力してください。",
     concierge_img_url: "./img/concierge.png",
     send_icon_img_url: "./img/send-icon.png",
     question_img_url: "./img/question.png",
