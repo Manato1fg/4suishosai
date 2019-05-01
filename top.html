@@ -158,7 +158,7 @@
 	<script src="assets/js/main.js"></script>
 	<script>
 		var slideIndex = 0;
-		showSlides();
+		//showSlides();
 
 		function showSlides() {
 			var i;
@@ -179,6 +179,8 @@
 
 		rythm.addRythm("music-button", "pulse", 150, 10);
 		document.getElementById("music-button").addEventListener('click', function(e){
+			console.log("Hello");
+			
 			rythm.start()
 		})
 	</script>
