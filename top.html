@@ -29,7 +29,7 @@
 
 		<!-- Header -->
 		<header id="header">
-			<a href="top.html" class="logo">Voyage</a>
+			<a href="top.html" class="logo" id="music-button">Voyage</a>
 		</header>
 
 		<!-- Nav -->
@@ -176,7 +176,9 @@
 	<script>
 		var rythm = new Rythm()
 		rythm.setMusic('./assets/music/gyoza.mp3')
-		rythm.start()
+		document.getElementById("music-button").addEventListener('click', function(e){
+			rythm.start()
+		})
 	</script>
 </body>
 </html>
