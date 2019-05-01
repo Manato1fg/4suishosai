@@ -23,8 +23,8 @@
 			<button id="music-button1" class="rythm-bass">
 				Button
 			</button>
-			<h1 id="music-button">Voyage</h1>
-			<p>【公式】翠翔祭2019 ~Voyage~</p>
+			<h1 id="music1">Voyage</h1>
+			<p id="music2">【公式】翠翔祭2019 ~Voyage~</p>
 			<ul class="actions">
 				<li><a href="#header" class="button icon solo fa-arrow-down scrolly">Continue</a></li>
 			</ul>
@@ -38,8 +38,8 @@
 		<!-- Nav -->
 		<nav id="nav">
 			<ul class="links">
-				<li class="active"><a href="top.html">TOP</a></li>
-				<li><a href="index.html">企画</a></li>
+				<li class="active"><a href="top.html" id="music3">TOP</a></li>
+				<li><a href="index.html" id="music4">企画</a></li>
 				<li><a href="generic.html">タイムテーブル/a></li>
 				<li><a href="elements.html">お知らせ</a></li>
 			</ul>
@@ -70,7 +70,7 @@
 			<!-- Post -->
 			<section class="post">
 				<header class="major">
-					<span class="date">はじめに</span>
+					<span class="date" id="music5">はじめに</span>
 					<h1>ごあいさつ</h1>
 					<p>皆さん、こんにちは！2019年度 横浜翠嵐高校翠翔祭実行委員会の楊 真人です。翠翔祭ホームページへようこそ！<br />
 						 今年の翠翔祭は、6月22日,23日の2日間にわたって行われます。<br />
@@ -81,7 +81,7 @@
 						 夏の最初の思い出に、ぜひ翠嵐高校までお越しください！お待ちしています。</p>
 						 <p>-全日制翠翔祭実行委員会 楊 真人</p>
 				</header>
-				<div class="image main"><img src="images/pic.jpg" alt="" /></div>
+				<div class="image main"><img src="images/pic.jpg" alt="" id="music6"/></div>
 				<p>翠翔祭にお越しいただき、ありがとうございます。<br />
 					毎年定時制の食べ物は美味しいと評判です。特に、多文化共生は、様々な国の料理を作り販売をします。<br />
 					今年度からは、有志ではなく、１人１人が活躍できるように工夫しています。老若男女関係なく楽しめるように定時制も全日制も頑張りますので、最後まで楽しんでください。<br />
@@ -157,11 +157,32 @@
 	<script src="assets/js/browser.min.js"></script>
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/rythm.js/2.2.4/rythm.min.js"></script>
 	<script>
-		document.getElementById("music-button1").addEventListener('click', function (e) {
+		window.onload = function(){
 			var rythm = new Rythm();
 			rythm.setMusic('./assets/music/gyoza.mp3')
 
-			rythm.addRythm("music-button1", "pulse", 150, 10);
+			rythm.addRythm("music2", "pulse", 150, 10);
+			rythm.addRythm('music1', 'neon', 0, 10, {
+				from: [0, 0, 255],
+				to: [255, 0, 255]
+			})
+			rythm.addRythm('music3', 'neon', 0, 10, {
+				from: [255, 255, 0],
+				to: [255, 0, 0]
+			})
+			rythm.addRythm('music4', 'blur', 0, 10, {
+				reverse: true
+			})
+			rythm.addRythm('music5', 'color', 0, 10, {
+				from: [0, 0, 255],
+				to: [255, 0, 255]
+			})
+
+		}
+		document.getElementById("music-button1").addEventListener('click', function (e) {
+			if (rythm.stopped === false) {
+				rythm.stop()
+			}
 			rythm.start();
 		})
 	</script>
