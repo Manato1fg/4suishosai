@@ -1,0 +1,77 @@
+* {box-sizing: border-box;}
+body {font-family: Verdana, sans-serif;}
+.mySlides {display: none;}
+img {
+    vertical-align: middle;
+    max-width: 100%;
+}
+
+/* Slideshow container */
+.slideshow-container {
+  position: relative;
+  margin: auto;
+  text-align: center;
+}
+
+/* Caption text */
+.text {
+  color: #000;
+  font-size: 15px;
+  top: 150px;
+  text-align: center;
+}
+/* Fading animation */
+.fade {
+  -webkit-animation-name: fade;
+  -webkit-animation-duration: 2.4s;
+  animation-name: fade;
+  animation-duration: 2.4s;
+}
+
+@-webkit-keyframes fade {
+  from {opacity: .4} 
+  to {opacity: 1}
+}
+
+@keyframes fade {
+  from {opacity: .4} 
+  to {opacity: 1}
+}
+
+/* On smaller screens, decrease text size */
+@media only screen and (max-width: 300px) {
+  .text {font-size: 11px}
+}
+
+.search-field {
+  /* This bit sets up the horizontal layout */
+  display:flex;
+  flex-direction:row;
+  
+  /* I've used padding so you can see the edges of the elements. */
+  padding:2px;
+}
+
+.search-field input {
+  /* Tell the input to use all the available space */
+  flex-grow:2;
+  /* And hide the input's outline, so the form looks like the outline */
+  border: solid 1px black;
+  height: 3rem;
+  padding: 0 2rem;
+}
+
+@media screen and (max-width: 980px) {
+    .search-field input {
+        /* Tell the input to use all the available space */
+        flex-grow:2;
+        /* And hide the input's outline, so the form looks like the outline */
+        border: solid 1px black;
+        height: 3.25rem;
+        padding: 0 2rem;
+    }
+}
+
+.search-field input:focus{
+  outline: none;
+}
