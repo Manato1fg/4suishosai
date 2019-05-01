@@ -20,6 +20,9 @@
 	<div id="wrapper">
 		<!-- Intro -->
 		<div id="intro">
+			<button id="music-button1">
+				Button
+			</button>
 			<h1 id="music-button">Voyage</h1>
 			<p>【公式】翠翔祭2019 ~Voyage~</p>
 			<ul class="actions">
@@ -177,8 +180,8 @@
 		var rythm = new Rythm()
 		rythm.setMusic('./assets/music/gyoza.mp3')
 
-		rythm.addRythm("music-button", "pulse", 150, 10);
-		document.getElementById("music-button").addEventListener('click', function(e){
+		rythm.addRythm("music-button1", "pulse", 150, 10);
+		document.getElementById("music-button1").addEventListener('click', function(e){
 			console.log("Hello");
 			
 			rythm.start()
