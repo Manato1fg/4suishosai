@@ -155,6 +155,16 @@
 	<script src="assets/js/jquery.scrollex.min.js"></script>
 	<script src="assets/js/jquery.scrolly.min.js"></script>
 	<script src="assets/js/browser.min.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/rythm.js/2.2.4/rythm.min.js"></script>
+	<script>
+		document.getElementById("music-button1").addEventListener('click', function (e) {
+			var rythm = new Rythm();
+			rythm.setMusic('./assets/music/gyoza.mp3')
+
+			rythm.addRythm("music-button1", "pulse", 150, 10);
+			rythm.start();
+		})
+	</script>
 	<script src="assets/js/breakpoints.min.js"></script>
 	<!--<script src="assets/js/timecounter.js"></script>-->
 	<script src="assets/js/util.js"></script>
@@ -174,16 +184,6 @@
 			slides[slideIndex - 1].style.display = "block";
 			setTimeout(showSlides, 5000);
 		}
-	</script>
-	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/rythm.js/2.0.0/rythm.min.js"></script>
-	<script>
-		document.getElementById("music-button1").addEventListener('click', function(e){
-			var rythm = new Rythm();
-			rythm.setMusic('./assets/music/gyoza.mp3')
-
-			rythm.addRythm("music-button1", "pulse", 150, 10);
-			rythm.start();
-		})
 	</script>
 </body>
 </html>
