@@ -4,7 +4,7 @@ window.onload = function(){
     registerRythm();
 
     appendConciergeCallback(function(text){
-        if(text === "The secret key was entered"){
+        if(text === "The secret key was given"){
             onStart();
         }
     })

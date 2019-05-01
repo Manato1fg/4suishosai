@@ -18,7 +18,7 @@ Settings.template = `
             </div>
         </div>
     </div>
-    <div id="concierge-button">
+    <div id="concierge-button" class="jump">
         <img src="${Settings.concierge_img_url}">
     </div>`;
 
