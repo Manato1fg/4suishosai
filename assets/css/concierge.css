@@ -9,6 +9,10 @@
     right: 40px;
 }
 
+#concierge{
+  z-index: 100;
+}
+
 #concierge-button img{
     width: 64px;
     height: 64px;
