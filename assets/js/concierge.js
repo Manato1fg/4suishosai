@@ -43,6 +43,8 @@ const SPEAKER_USER_BALLOON = `
 
 window.addEventListener("load", (e) => {initConcierge()});
 
+var concierge_callbacks = [];
+
 var logs = [];
 
 function initConcierge() {
@@ -124,6 +126,9 @@ function sendMessage(){
                 var data = JSON.parse(response);
                 
                 for(var i = 0; i < data.length; i++){
+                    for(var j = 0; j < concierge_callbacks.length; j++){
+                        concierge_callbacks[j](data[i]);
+                    }
                     createMessage(data[i], SPEAKER_CONCIERGE);
                 }
             }
@@ -194,4 +199,8 @@ function postData(url, data, callback){
 
 function createRequest(name, value) {
     return name + "=" + value;
+}
+
+function appendConciergeCallback(func){
+    concierge_callbacks.push(func);
 }
