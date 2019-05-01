@@ -174,9 +174,9 @@
 	</script>
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/rythm.js/2.0.0/rythm.min.js"></script>
 	<script>
-		var rythm = new Rythm()
-		rythm.setMusic('./assets/music/gyoza.mp3')
 		document.getElementById("music-button").addEventListener('click', function(e){
+			var rythm = new Rythm()
+			rythm.setMusic('./assets/music/gyoza.mp3')
 			rythm.start()
 		})
 	</script>
