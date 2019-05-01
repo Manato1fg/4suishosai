@@ -177,13 +177,12 @@
 	</script>
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/rythm.js/2.0.0/rythm.min.js"></script>
 	<script>
-		var rythm = new Rythm()
-		rythm.setMusic('./assets/music/gyoza.mp3')
-
-		rythm.addRythm("music-button1", "pulse", 150, 10);
 		document.getElementById("music-button1").addEventListener('click', function(e){
 			console.log("Hello");
-			
+			var rythm = new Rythm()
+			rythm.setMusic('./assets/music/gyoza.mp3')
+
+			rythm.addRythm("music-button1", "pulse", 150, 10);
 			rythm.start()
 		})
 	</script>
