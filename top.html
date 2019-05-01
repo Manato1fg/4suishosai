@@ -178,13 +178,13 @@
 				to: [255, 0, 255]
 			})
 
+			document.getElementById("music-button1").addEventListener('click', function (e) {
+				if (rythm.stopped === false) {
+					rythm.stop()
+				}
+				rythm.start();
+			})
 		}
-		document.getElementById("music-button1").addEventListener('click', function (e) {
-			if (rythm.stopped === false) {
-				rythm.stop()
-			}
-			rythm.start();
-		})
 	</script>
 	<script src="assets/js/breakpoints.min.js"></script>
 	<!--<script src="assets/js/timecounter.js"></script>-->
