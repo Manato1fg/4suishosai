@@ -157,36 +157,36 @@
 	<script src="assets/js/browser.min.js"></script>
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/rythm.js/2.2.4/rythm.min.js"></script>
 	<script>
-		document.onload = function(){
-			console.log("Hello World1");
-			var rythm = new Rythm();
+		document.addEventListener("load", function () {
+				console.log("Hello World1");
+				var rythm = new Rythm();
 
-			rythm.addRythm("music2", "pulse", 150, 10);
-			rythm.addRythm('music1', 'neon', 0, 10, {
-				from: [0, 0, 255],
-				to: [255, 0, 255]
-			})
-			rythm.addRythm('music3', 'neon', 0, 10, {
-				from: [255, 255, 0],
-				to: [255, 0, 0]
-			})
-			rythm.addRythm('music4', 'blur', 0, 10, {
-				reverse: true
-			})
-			rythm.addRythm('music5', 'color', 0, 10, {
-				from: [0, 0, 255],
-				to: [255, 0, 255]
-			})
+				rythm.addRythm("music2", "pulse", 150, 10);
+				rythm.addRythm('music1', 'neon', 0, 10, {
+					from: [0, 0, 255],
+					to: [255, 0, 255]
+				})
+				rythm.addRythm('music3', 'neon', 0, 10, {
+					from: [255, 255, 0],
+					to: [255, 0, 0]
+				})
+				rythm.addRythm('music4', 'blur', 0, 10, {
+					reverse: true
+				})
+				rythm.addRythm('music5', 'color', 0, 10, {
+					from: [0, 0, 255],
+					to: [255, 0, 255]
+				})
 
-			document.getElementById("music-button1").addEventListener('click', function (e) {
-				if (rythm.stopped === false) {
-					rythm.stop()
-				}
-				rythm.setMusic('assets/music/gyoza.mp3')
-				rythm.start();
-				console.log("Hello World ちんちん");
-				
-			})
+				document.getElementById("music-button1").addEventListener('click', function (e) {
+					if (rythm.stopped === false) {
+						rythm.stop()
+					}
+					rythm.setMusic('assets/music/gyoza.mp3')
+					rythm.start();
+					console.log("Hello World ちんちん");
+
+			});
 		}
 	</script>
 	<script src="assets/js/breakpoints.min.js"></script>
