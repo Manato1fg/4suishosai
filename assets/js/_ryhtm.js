@@ -3,18 +3,18 @@ window.onload = function(){
     rythm.setMusic('./assets/music/gyoza.mp3');
     registerRythm();
 
-    appendConciergeCallback(function(text){
-        if(text === "The secret key was given"){
-            onStart();
-        }
-    })
-
-    var onStart = function(){
+    var onStart = function () {
         if (rythm.stopped === false) {
             rythm.stop()
         }
         rythm.start();
     }
+
+    appendConciergeCallback(function(text){
+        if(text === "The secret key was given"){
+            onStart();
+        }
+    })
 
     function registerRythm(){
         rythm.addRythm("pulse", "pulse", 150, 10);
