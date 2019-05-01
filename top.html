@@ -159,6 +159,7 @@
 	<script>
 		window.onload = function () {
 				let rythm = new Rythm();
+				rythm.setMusic('./assets/music/gyoza.mp3');
 
 				rythm.addRythm("music2", "pulse", 150, 10);
 				rythm.addRythm('music1', 'neon', 0, 10, {
@@ -181,8 +182,10 @@
 					if (rythm.stopped === false) {
 						rythm.stop()
 					}
-					rythm.setMusic('./assets/music/gyoza.mp3');
+
 					rythm.start();
+					console.log("Hello World");
+					
 
 			});
 		};
