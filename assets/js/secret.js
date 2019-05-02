@@ -13,6 +13,12 @@ window.onload = function(){
     appendConciergeCallback(function(text){
         if(text === "The secret key was given"){
             onStart();
+        }else if(text === "Up Side Down"){
+            document.getElementById("main").classList.add("reverse");
+        }else if(text === "May the Force be with you"){
+            document.getElementById("wrapper1").classList.add("starwars-outer");
+            document.getElementById("wrapper").classList.add("starwars-inner");
+            new Audio('./assets/music/starwars.mp3').play(); // 再生される
         }
     })
 
