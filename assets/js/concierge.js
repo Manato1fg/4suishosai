@@ -1,8 +1,8 @@
 var Settings = {
     init_message: "翠翔祭ホームページへようこそ！<br>私は案内人の{name}と申します。<br>質問や雑談などお気軽にお話しくださいませ。<br>質問の際はクエスチョンマークのボタンを押すか、@qに続けて検索ワードを入力してください。",
-    concierge_img_url: "./images/concierge.png",
-    send_icon_img_url: "./images/send-icon.png",
-    question_img_url: "./images/question.png",
+    concierge_img_url: "./img/concierge.png",
+    send_icon_img_url: "./img/send-icon.png",
+    question_img_url: "./img/question.png",
     KEY_ENTER: 13
 }
 
@@ -18,8 +18,9 @@ Settings.template = `
             </div>
         </div>
     </div>
-    <div id="concierge-button" class="jump">
+    <div id="concierge-button">
         <img src="${Settings.concierge_img_url}">
+        <span>&nbsp;ご質問はこちらから&nbsp;</span>
     </div>`;
 
 const SPEAKER_CONCIERGE = 0;
@@ -125,8 +126,8 @@ function sendMessage(){
                 
                 var data = JSON.parse(response);
                 
-                for(var i = 0; i < data.length; i++){
-                    for(var j = 0; j < concierge_callbacks.length; j++){
+                for (var i = 0; i < data.length; i++) {
+                    for (var j = 0; j < concierge_callbacks.length; j++) {
                         concierge_callbacks[j](data[i]);
                     }
                     createMessage(data[i], SPEAKER_CONCIERGE);
@@ -201,6 +202,6 @@ function createRequest(name, value) {
     return name + "=" + value;
 }
 
-function appendConciergeCallback(func){
+function appendConciergeCallback(func) {
     concierge_callbacks.push(func);
 }
