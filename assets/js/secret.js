@@ -19,9 +19,54 @@ window.onload = function(){
             document.getElementById("wrapper1").classList.add("starwars-outer");
             document.getElementById("wrapper").classList.add("starwars-inner");
             new Audio('./assets/music/starwars.mp3').play(); // 再生される
+            createGyoza();
+            setTimeout(doMove, 10);
         }
     })
-
+    
+    var onMoving = false;
+    var vx = 20;
+    var vy = -20;
+    let img = document.createElement("img");
+    
+    function createGyoza(){
+        img.id = "gyoza-img";
+        img.src = "./images/gyoza.jpg";
+        document.body.append(img);
+        setTimeout(doMove, 10);
+    }
+    
+    function doMove(){
+        if(!onMoving) return;
+        var x = img.style.x;
+        var y = img.style.y;
+        var w = img.width;
+        var h = img.heightl;
+        var W = window.innerWidth;
+        var H = window.innerHeight;
+        if(x + vx <= 0){
+            img.style.x = 0;
+            vx = -vx;
+        }
+        
+        if(x + vx + w >= W){
+            img.style.x = W - w;
+            vx = -vx;
+        }
+        
+        if(y + vy <= 0){
+            img.style.y = 0;
+            vy = -vy;
+        }
+        
+        if(y + vy + h >= W){
+            img.style.y = H - h;
+            vy = -vy;
+        }
+        
+        setTimeout(doMove, 10);
+    }
+           
     function registerRythm(){
         rythm.addRythm("pulse", "pulse", 150, 10);
         rythm.addRythm('neon1', 'neon', 0, 10, {
