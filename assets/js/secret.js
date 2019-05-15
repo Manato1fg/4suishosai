@@ -15,7 +15,7 @@ window.onload = function(){
             onStart();
             createGyoza();
             onMoving = true;
-            setTimeout(doMove, 10);
+            setTimeout(doMove, t);
             alert("OK");
         }else if(text === "Up Side Down"){
             document.getElementById("main").classList.add("reverse");
@@ -34,6 +34,7 @@ window.onload = function(){
     var _y = 0;
     var w = 200;
     var h = 160;
+    var t = 5;
     let img = document.createElement("img");
     
     function createGyoza(){
@@ -74,7 +75,7 @@ window.onload = function(){
         img.style.left = _x + "px";
         img.style.top = _y + "px";
         
-        setTimeout(doMove, 10);
+        setTimeout(doMove, t);
     }
            
     function registerRythm(){
