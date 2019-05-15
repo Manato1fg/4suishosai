@@ -14,6 +14,7 @@ window.onload = function(){
         if(text === "The secret key was given"){
             onStart();
             createGyoza();
+            onMoving = true;
             setTimeout(doMove, 10);
             alert("OK");
         }else if(text === "Up Side Down"){
@@ -34,6 +35,7 @@ window.onload = function(){
     function createGyoza(){
         img.id = "gyoza-img";
         img.src = "./images/gyoza.jpg";
+        img.style.top = 0 + "px";
         document.body.append(img);
         setTimeout(doMove, 10);
     }
