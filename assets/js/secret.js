@@ -35,36 +35,36 @@ window.onload = function(){
     function createGyoza(){
         img.id = "gyoza-img";
         img.src = "./images/gyoza.jpg";
-        img.style.top = 0 + "px";
+        img.style.top = 0;
         document.body.append(img);
         setTimeout(doMove, 10);
     }
     
     function doMove(){
         if(!onMoving) return;
-        var x = img.style.x;
-        var y = img.style.y;
-        var w = img.width;
-        var h = img.heightl;
+        var x = img.style.top;
+        var y = img.style.left;
+        var w = img.style.width;
+        var h = img.style.height;
         var W = window.innerWidth;
         var H = window.innerHeight;
         if(x + vx <= 0){
-            img.style.x = 0;
+            img.style.left = 0;
             vx = -vx;
         }
         
         if(x + vx + w >= W){
-            img.style.x = W - w;
+            img.style.left = W - w;
             vx = -vx;
         }
         
         if(y + vy <= 0){
-            img.style.y = 0;
+            img.style.top = 0;
             vy = -vy;
         }
         
         if(y + vy + h >= W){
-            img.style.y = H - h;
+            img.style.top = H - h;
             vy = -vy;
         }
         
