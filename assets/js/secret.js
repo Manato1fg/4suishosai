@@ -28,8 +28,8 @@ window.onload = function(){
     })
     
     var onMoving = false;
-    var vx = 5;
-    var vy = -5;
+    var vx = 2;
+    var vy = -2;
     var _x = 0;
     var _y = 0;
     var w = 200;
