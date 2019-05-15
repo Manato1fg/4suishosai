@@ -30,6 +30,10 @@ window.onload = function(){
     var onMoving = false;
     var vx = 20;
     var vy = -20;
+    var _x = 0;
+    var _y = 0;
+    var w = 50;
+    var h = 40;
     let img = document.createElement("img");
     
     function createGyoza(){
@@ -42,31 +46,33 @@ window.onload = function(){
     
     function doMove(){
         if(!onMoving) return;
-        var x = img.style.top;
-        var y = img.style.left;
-        var w = img.style.width;
-        var h = img.style.height;
+        
         var W = window.innerWidth;
         var H = window.innerHeight;
-        if(x + vx <= 0){
-            img.style.left = 0 + "px";
+        
+        _x += vx;
+        _y += vy;
+        if(_x <= 0){
+            _x = 0;
             vx = -vx;
         }
         
-        if(x + vx + w >= W){
-            img.style.left = W - w + "px";
+        if(_x +  w >= W){
+            _x = W - w;
             vx = -vx;
         }
         
-        if(y + vy <= 0){
-            img.style.top = 0 + "px";
+        if(_y <= 0){
+            _y = 0;
             vy = -vy;
         }
         
-        if(y + vy + h >= W){
-            img.style.top = H - h + "px";
+        if(_y + h >= H){
+            _y = H - h;
             vy = -vy;
         }
+        img.style.left = _x + "px";
+        img.style.top = _y + "px";
         
         setTimeout(doMove, 10);
     }
