@@ -21,6 +21,7 @@ window.onload = function(){
             new Audio('./assets/music/starwars.mp3').play(); // 再生される
             createGyoza();
             setTimeout(doMove, 10);
+            alert("OK");
         }
     })
     
