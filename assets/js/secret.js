@@ -49,22 +49,22 @@ window.onload = function(){
         var W = window.innerWidth;
         var H = window.innerHeight;
         if(x + vx <= 0){
-            img.style.left = 0;
+            img.style.left = 0 + "px";
             vx = -vx;
         }
         
         if(x + vx + w >= W){
-            img.style.left = W - w;
+            img.style.left = W - w + "px";
             vx = -vx;
         }
         
         if(y + vy <= 0){
-            img.style.top = 0;
+            img.style.top = 0 + "px";
             vy = -vy;
         }
         
         if(y + vy + h >= W){
-            img.style.top = H - h;
+            img.style.top = H - h + "px";
             vy = -vy;
         }
         
