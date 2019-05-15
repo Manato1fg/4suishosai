@@ -32,8 +32,8 @@ window.onload = function(){
     var vy = -5;
     var _x = 0;
     var _y = 0;
-    var w = 50;
-    var h = 40;
+    var w = 100;
+    var h = 80;
     let img = document.createElement("img");
     
     function createGyoza(){
