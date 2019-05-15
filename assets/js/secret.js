@@ -102,7 +102,7 @@ class Gyoza{
         this.rx = getRandomInt(0, 360);
         this.vx = getRandomInt(1, 3);
         this.vy = getRandomInt(1, 3);
-        this.rvx = getRandomInt(-8, 8);
+        this.rvx = getRandomInt(-10, 10) / 2;
         this.w = getRandomInt(75, 200);
         this.h = this.w * 0.8;
         this.onMoving = true;
