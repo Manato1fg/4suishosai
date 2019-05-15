@@ -102,7 +102,7 @@ class Gyoza{
         this.rx = getRandomInt(0, 360);
         this.vx = getRandomInt(1, 3);
         this.vy = getRandomInt(1, 3);
-        this.rvx = getRandomInt(-20, 20);
+        this.rvx = getRandomInt(-8, 8);
         this.w = getRandomInt(75, 200);
         this.h = this.w * 0.8;
         this.onMoving = true;
@@ -151,9 +151,12 @@ class Gyoza{
             }
             this.img.style.left = this.x + "px";
             this.img.style.top = this.y + "px";
-            this.img.style.transform = "rotateX("+this.rx+"deg);";
-            this.img.style.MozTransform = "rotateX(" + this.rx + "deg);";
-            this.img.style.webkitTransform = "rotateX(" + this.rx + "deg);";
+
+            this.img.style.webkitTransform = "rotate("+this.rx+"deg)";
+            this.img.style.mozTransform = "rotate("+this.rx+"deg)";
+            this.img.style.msTransform = "rotate("+this.rx+"deg)";
+            this.img.style.oTransform = "rotate("+this.rx+"deg)";
+            this.img.style.transform = "rotate("+this.rx+"deg)";
         }
     }
 }
