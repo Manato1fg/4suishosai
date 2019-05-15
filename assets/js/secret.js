@@ -14,9 +14,7 @@ window.onload = function(){
         if(text === "The secret key was given"){
             onStart();
             createGyoza();
-            onMoving = true;
-            setTimeout(doMove, t);
-            alert("OK");
+            doMove();
         }else if(text === "Up Side Down"){
             document.getElementById("main").classList.add("reverse");
         }else if(text === "May the Force be with you"){
@@ -27,54 +25,20 @@ window.onload = function(){
         }
     })
     
-    var onMoving = false;
-    var vx = 2;
-    var vy = -2;
-    var _x = 0;
-    var _y = 0;
-    var w = 200;
-    var h = 160;
     var t = 5;
-    let img = document.createElement("img");
+    let gyozas = [];
     
     function createGyoza(){
-        img.id = "gyoza-img";
-        img.src = "./images/gyoza.png";
-        img.style.top = 0;
-        document.body.append(img);
-        setTimeout(doMove, 10);
+        if(gyozas.length <= 10){
+            gyozas.push(new Gyoza());
+        }
+        setTimeout(createGyoza, 3000);
     }
     
     function doMove(){
-        if(!onMoving) return;
-        
-        var W = window.innerWidth;
-        var H = window.innerHeight;
-        
-        _x += vx;
-        _y += vy;
-        if(_x <= 0){
-            _x = 0;
-            vx = -vx;
+        for(var i = 0; i < gyozas.length; i++){
+            gyozas[i].doMove();
         }
-        
-        if(_x +  w >= W){
-            _x = W - w;
-            vx = -vx;
-        }
-        
-        if(_y <= 0){
-            _y = 0;
-            vy = -vy;
-        }
-        
-        if(_y + h >= H){
-            _y = H - h;
-            vy = -vy;
-        }
-        img.style.left = _x + "px";
-        img.style.top = _y + "px";
-        
         setTimeout(doMove, t);
     }
            
@@ -118,5 +82,78 @@ window.onload = function(){
         rythm.addRythm('vanish2', 'vanish', 0, 10, {
             reverse: true
         })
+    }
+}
+
+function getRandomInt(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min)) + min; //The maximum is exclusive and the minimum is inclusive
+}
+
+class Gyoza{
+
+    constructor(){
+        this.img = document.createElement("img");
+        this.img.classList.add("gyoza-img");
+        this.img.src = "./images/gyoza.png";
+        this.x = getRandomInt(0, window.innerWidth);
+        this.y = getRandomInt(0, window.innerHeight);
+        this.rx = getRandomInt(0, 360);
+        this.vx = getRandomInt(1, 3);
+        this.vy = getRandomInt(1, 3);
+        this.rvx = getRandomInt(-20, 20);
+        this.w = getRandomInt(75, 200);
+        this.h = this.w * 0.8;
+        this.onMoving = true;
+
+        this.img.style.width = this.w + "px";
+        this.img.style.height = this.h + "px";
+        this.img.style.top = this.y;
+        this.img.style.left = this.x;
+
+        document.body.append(this.img);
+    }
+
+    doMove(){
+        if(this.onMoving){
+            var W = window.innerWidth;
+            var H = window.innerHeight;
+
+            this.x += this.vx;
+            this.y += this.vy;
+            if (  this.x <= 0) {
+                this.x = 0;
+                this.vx = -this.vx;
+            }
+
+            if (this.x + this.w >= W) {
+                this.x = W - this.w;
+                this.vx = -this.vx;
+            }
+
+            if (this.y <= 0) {
+                this.y = 0;
+                this.vy = -this.vy;
+            }
+
+            if (this.y + this.h >= H) {
+                this.y = H - this.h;
+                this.vy = -this.vy;
+            }
+
+            this.rx += this.rvx;
+            if(this.rx <= 0){
+                this.rx += 360;
+            }
+            if(this.rx >= 360){
+                this.rx -= 360;
+            }
+            this.img.style.left = this.x + "px";
+            this.img.style.top = this.y + "px";
+            this.img.style.transform = "rotateX("+this.rx+"deg);";
+            this.img.style.MozTransform = "rotateX(" + this.rx + "deg);";
+            this.img.style.webkitTransform = "rotateX(" + this.rx + "deg);";
+        }
     }
 }

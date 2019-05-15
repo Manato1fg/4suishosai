@@ -226,7 +226,7 @@ LINE stamp
     }
 }
 
-#gyoza-img{
+.gyoza-img{
     z-index:10000;
     position: fixed;
     width: 200px;
