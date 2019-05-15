@@ -39,7 +39,7 @@ window.onload = function(){
     
     function createGyoza(){
         img.id = "gyoza-img";
-        img.src = "./images/gyoza.jpg";
+        img.src = "./images/gyoza.png";
         img.style.top = 0;
         document.body.append(img);
         setTimeout(doMove, 10);
