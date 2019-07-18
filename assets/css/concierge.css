@@ -229,7 +229,7 @@ LINE stamp
 .gyoza-img{
     z-index:10000;
     position: fixed;
-    width: 200px;
-    height: 160px;
+    width: 100px;
+    height: 80px;
     top: 0px;
 }
