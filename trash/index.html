@@ -6,7 +6,7 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<link rel="icon" href="img/favicon.png" type="image/png">
-	<title>Comodo Games</title>
+	<title>トラッシュバスターず</title>
 	<!-- Bootstrap CSS -->
 	<link rel="stylesheet" href="css/bootstrap.css">
 	<link rel="stylesheet" href="vendors/linericon/style.css">
@@ -136,7 +136,13 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> Manat
 		var count = parseInt(window.localStorage.getItem("count"));
 		$("#count").text(count.toString());
 
+		var last = 0;
+
 		$("#play").on("click", function(){
+			if(Date.now() - last < 2000){
+				alert("2秒経つまで待ってください");
+				return;
+			}
 			$.ajax({
 				url: "https://suishosai-server-php.herokuapp.com/post.php",
 				type: "GET",
@@ -150,6 +156,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> Manat
 			count++;
 			window.localStorage.setItem("count", count.toString());
 			$("#count").text(count.toString());
+			last = Date.now();
 		})
 	</script>
 </body>
