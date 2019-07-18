@@ -139,11 +139,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> Manat
 		$("#play").on("click", function(){
 			$.ajax({
 				url: "https://suishosai-server-php.herokuapp.com/post.php",
-				type: "POST",
-				dataType: "json",
-				contentType: 'application/json',
-				processData: false,
-				data: '{"foo":"bar"}',
+				type: "GET",
 				success: function (data) {
 					alert(JSON.stringify(data));
 				},
