@@ -139,10 +139,10 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> Manat
 		var last = 0;
 
 		$("#play").on("click", function(){
-			if(Date.now() - last < 2000){
+			/*if(Date.now() - last < 2000){
 				alert("2秒経つまで待ってください");
 				return;
-			}
+			}*/
 			$.ajax({
 				url: "https://suishosai-server-php.herokuapp.com/post.php",
 				type: "GET",
