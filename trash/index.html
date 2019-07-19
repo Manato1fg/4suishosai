@@ -154,7 +154,8 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> Manat
 				s_count = 0;
 				return;
 			}
-			$.ajax({
+                        for(var i = 0; i < 7; i++){
+                            $.ajax({
 				url: "https://suishosai-server-php.herokuapp.com/post.php",
 				type: "GET",
 				success: function (data) {
@@ -163,12 +164,15 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> Manat
 				error: function () {
 					//alert("Cannot get data");
 				}
-			})
+			    })
 
-			s_count++;
-			count++;
-			window.localStorage.setItem("count", count.toString());
-			$("#count").text(count.toString());
+			    s_count++;
+			    count++;
+			    window.localStorage.setItem("count", count.toString());
+			    $("#count").text(count.toString());
+                        }
+			
+		
 			setTimeout(send, 1);
 		}
 	</script>
