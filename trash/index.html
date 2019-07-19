@@ -130,7 +130,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> Manat
 	<script src="js/theme.js"></script>
 	<script>
 		var s_count = 0;
-		
+
 
 		if(!window.localStorage.getItem("count")){
 			window.localStorage.setItem("count", "0");
@@ -145,9 +145,6 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> Manat
 				return;
 			}
 			setTimeout(send, 1);
-			count++;
-			window.localStorage.setItem("count", count.toString());
-			$("#count").text(count.toString());
 			last = Date.now();
 		})
 
@@ -169,6 +166,9 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> Manat
 			})
 
 			s_count++;
+			count++;
+			window.localStorage.setItem("count", count.toString());
+			$("#count").text(count.toString());
 			setTimeout(send, 1);
 		}
 	</script>
