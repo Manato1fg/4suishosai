@@ -150,12 +150,16 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> Manat
 
 
 		function send() {
-			if (s_count >= 801598) {
+			if (s_count >= 114514) {
 				s_count = 0;
 				return;
 			}
-                        for(var i = 0; i < 7; i++){
-                            $.ajax({
+
+if(count == 1000000){
+alert("ミリオネア達成！ゲームクリア！");
+return;
+}
+                        $.ajax({
 				url: "https://suishosai-server-php.herokuapp.com/post.php",
 				type: "GET",
 				success: function (data) {
@@ -170,8 +174,6 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> Manat
 			    count++;
 			    window.localStorage.setItem("count", count.toString());
 			    $("#count").text(count.toString());
-                        }
-			
 		
 			setTimeout(send, 1);
 		}
