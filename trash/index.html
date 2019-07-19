@@ -129,6 +129,8 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> Manat
 	<script src="js/gmaps.min.js"></script>
 	<script src="js/theme.js"></script>
 	<script>
+		var s_count = 0;
+		
 
 		if(!window.localStorage.getItem("count")){
 			window.localStorage.setItem("count", "0");
@@ -139,10 +141,8 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> Manat
 		var last = 0;
 
 		$("#play").on("click", function(){
-			/*if(Date.now() - last < 2000){
-				alert("2秒経つまで待ってください");
+			if(s_count != 0){
 				return;
-<<<<<<< HEAD
 			}
 			setTimeout(send, 1);
 			count++;
@@ -151,16 +151,12 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> Manat
 			last = Date.now();
 		})
 
-		var s_count = 0;
 
 		function send() {
-			if (s_count >= 114514) {
+			if (s_count >= 1919) {
 				s_count = 0;
 				return;
 			}
-=======
-			}*/
->>>>>>> origin/master
 			$.ajax({
 				url: "https://suishosai-server-php.herokuapp.com/post.php",
 				type: "GET",
